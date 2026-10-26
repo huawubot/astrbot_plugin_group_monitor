@@ -1,0 +1,41 @@
+{
+  "rules": {
+    "type": "template_list",
+    "description": "群关联监控规则列表",
+    "hint": "配置哪些群需要联动监控",
+    "templates": {
+      "group_rule": {
+        "name": "监控规则",
+        "items": {
+          "name": {
+            "type": "string",
+            "description": "规则名称/备注 (留空自动使用监控群号)",
+            "default": ""
+          },
+          "group1": {
+            "type": "string",
+            "description": "监控群号 (进群的群)",
+            "default": ""
+          },
+          "group2": {
+            "type": "string",
+            "description": "目标群号 (必须在的群)",
+            "default": ""
+          },
+          "punish": {
+            "type": "string",
+            "description": "惩罚动作",
+            "options": ["mute", "kick"],
+            "default": "mute"
+          },
+          "delay": {
+            "type": "int",
+            "description": "缓冲时间(秒) - 禁言建议60秒，踢出建议600秒(10分钟)",
+            "default": 60
+          }
+        }
+      }
+    },
+    "default": []
+  }
+}
