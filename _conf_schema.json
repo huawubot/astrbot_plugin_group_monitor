@@ -1,8 +1,8 @@
 {
   "rules": {
     "type": "template_list",
-    "description": "群关联监控规则列表",
-    "hint": "配置哪些群需要联动监控",
+    "description": "群关联监控规则列表（同一监控群只允许一条规则）",
+    "hint": "配置哪些群需要联动监控。部署前提：机器人必须同时在监控群和目标群中，且在监控群具有管理员权限；仅支持 OneBot V11 平台。",
     "templates": {
       "group_rule": {
         "name": "监控规则",
@@ -30,8 +30,13 @@
           },
           "delay": {
             "type": "int",
-            "description": "缓冲时间(秒) - 禁言建议60秒，踢出建议600秒(10分钟)",
+            "description": "缓冲时间(秒) - 新人加入后多久执行校验，不是禁言时长。建议：禁言 60，踢出 600（与指令默认一致）",
             "default": 60
+          },
+          "mute_duration": {
+            "type": "int",
+            "description": "禁言时长(秒)，仅惩罚方式=禁言时生效，默认 86400（24小时）",
+            "default": 86400
           }
         }
       }
